@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% block title %}Test{% endblock %}
+{% block head %}
+KAIST Courses from <a href="http://webcais.kaist.ac.kr/devsso/lecture/lecture_elist.php?k_status=1&k_year=2011&k_term=2&k_dept=-1&k_course=-1&k_subject=-1&offset=0">Cais</a>{% endblock %}
+{% block content %}
+    <table width="790" bordercolor="#AOA198" border="1" bordercolorlight="#CFDOCB">
+        <tbody>
+        <td align=center bgcolor="#6B606B" width="16" height="38">
+            <p><span style="font-size:9pt;"><b><font color="white">no</font></b></span></p>
+        </td> 
+        <td align=center bgcolor="#6B606B" width="74" height="38">
+            <p><span style="font-size:8pt;"><b><font color="white">Dept</font></b></span></p>
+        </td> 
+        <td align=center bgcolor="#6B606B" width="46" height="38">
+            <p><span style="font-size:8pt;"><b><font     color="white">Classif<br>ication</font></b></span></p>
+        </td> 
+        <td align=center bgcolor="#6B606B" width="47" height="38">
+            <p><span style="font-size:8pt;"><b><font color="white">Course No</font></b></span></p>
+        </td> 
+        <td align=center bgcolor="#6B606B" width="38" height="38">
+            <p><span style="font-size:8pt;"><b><font color="white">Class</font></b></span></p>
+        </td> 
+        <td align=center bgcolor="#6B606B" width="34" height="38">
+            <p><span style="font-size:8pt;"><b><font color="white">Code</font></b></span></p>
+        </td> 
+        <td align=center bgcolor="#6B606B" width="126" height="38">
+            <p><span style="font-size:8pt;"><b><font color="white">Title</font></b></span></p>
+        </td> 
+        <td align=center bgcolor="#6B606B" width="52" height="38">
+            <p><span style="font-size:8pt;"><b><font color="white">L-L'-C</font></b></span></p>
+        </td> 
+        <td align=center bgcolor="#6B606B" width="20" height="38">
+            <p><span style="font-size:8pt;"><b><font color="white">Times</font></b></span></p>
+        </td> 
+        <td align=center bgcolor="#6B606B" width="81" height="38">
+            <p><span style="font-size:8pt;"><b><font color="white">Classroom</font></b></span></p>
+
+        </td> 
+        <td align=center bgcolor="#6B606B" width="43" height="38">
+            <p><span style="font-size:8pt;"><b><font color="white">Fixed#</font></b></span></p>
+        </td> 
+        <td align=center bgcolor="#6B606B" width="57" height="38" colspan = 2>
+            <p><span style="font-size:8pt;"><b><font color="white">Remarks</font></b></span></p>
+        </td>
+        {% if courses %} 
+            {% for course in courses %}
+                <tr>
+                    <td bgcolor="#E7E4E4" align="center">
+                        <p>{{ course.number }}</p>
+                    </td>
+                    <td bgcolor="#E7E4E4" align="center">
+                        <p>{{ course.dept }}</p>
+                    </td>
+                    <td bgcolor="#E7E4E4" align="center">
+                        <p>{{ course.classification }}</p>
+                    </td>
+                    <td bgcolor="#E7E4E4" align="center">
+                        <p>{{ course.coursenum }}</p>
+                    </td>
+                    <td bgcolor="#E7E4E4" align="center">
+                        <p>{{ course.section }}</p>
+                    </td>
+                    <td bgcolor="#E7E4E4" align="center">
+                        <p>{{ course.code }}</p>
+                    </td>
+                    <td bgcolor="#E7E4E4" align="center">
+                        <p>{{ course.title }}</p>
+                    </td>
+                    <td bgcolor="#E7E4E4" align="center">
+                        <p>{{ course.llc}}</p>
+                    </td>
+                    <td bgcolor="#E7E4E4" align="center">
+                        <p>{{ course.schedule }}</p>
+                    </td>
+                    <td bgcolor="#E7E4E4" align="center">
+                        <p>{{ course.room }}</p>
+                    </td>
+                    <td bgcolor="#E7E4E4" align="center">
+                        <p>{{ course.fixednum }}</p>
+                    </td>
+                    <td bgcolor="#E7E4E4" align="center">
+                        <p>{{ course.remarks }}</p>
+                    </td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <p>No courses</p>
+        {% endif %}
+        </tbody>
+    </table>
+{% endblock %}
