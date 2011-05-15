@@ -8,32 +8,28 @@
 
 </head>
 <body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
-<p align="center"><img src="/site_media/courseplanner_logo.bmp" border="0" width="609" height="81"></p>
-<p align="center">&nbsp;</p>
-<p align="center">&nbsp;</p>
-<p align="center">&nbsp;</p>
-<p align="center">&nbsp;</p>
-<p align="center">&nbsp;</p>
-<p align="center">&nbsp;</p>
-<p align="center">&nbsp;</p>
-<p align="center">&nbsp;</p>
-<p align="center">&nbsp;</p>
-<p align="center">&nbsp;</p>
-<p align="center">&nbsp;</p>
-<p align="center">&nbsp;</p>
-<p align="center"><br>
-<br>
-<br>
-<br>
-&nbsp;<br>
-&nbsp;</p>
+
+    <p align="center"><img src="/site_media/courseplanner_logo.bmp" border="0" width="609" height="81"></p>
     <form method="post" action=".">
     {% csrf_token %} 
         {{ form.as_table }}
         <input type="submit" value="Login" />
     </form>
-<p align="center"><img src="/site_media/KAIST_logo.jpg" border="0" width="142" height="56"><br>
-&copy; 2011 MMK</p>
-</body>
 
+    <table width="100%">
+        <tr>
+            <td height="450">
+            </td>
+        </tr>
+        <tr align="center">
+            <td>
+                <img src="/site_media/KAIST_logo.jpg" border="0" width="142" height="56"><br>&copy; 2011 MMK               
+            </td>
+        </tr>
+    </table>
+        
+        
+
+
+</body>
 </html>
