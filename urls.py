@@ -15,6 +15,6 @@ urlpatterns = patterns('',
     (r'^CoursePlanner/$', main),
     
     # Site Media
-    (r'site_media/(?P<path>.*)$', 'django.views.static.serve', 
+    (r'site_media/(?P<path>.*)$', 'django.views.static.serve',
         { 'document_root': site_media }),
 )

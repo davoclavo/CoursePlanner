@@ -1,9 +1,18 @@
 
 form {
     float: left;
+    position: top;
 }
 
 input {
     display: block;
+
+}
+
+body {
+    background-image:url('/site_media/kaist_summer_reduced2.jpg');
+    background-repeat: no-repeat;
+    background-position:center top;
+    ypos: 10%;
 }
 
