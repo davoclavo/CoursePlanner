@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>MMK - Courses Already taken</title>
+<link href="/site_media/CSS/style.css" rel="stylesheet" type="text/css" />
+<script src="/site_media/JS/script.js" type="text/javascript"></script> 
+<link href="CSS/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<table width="100%" border="1" cellspacing="0" cellpadding="0">
+  <tr>
+    <td> <!-- General Courses Mandatory -->
+    	{% if GM %} 
+        	{% for course in GM %}
+    			<a href="#" onclick="fireMyPopup(' {{ course.title }} ')" onmouseout="closeMyPopup()">{{ course.code }} <span class="grade">{{ course.code }}</span></a><br/>
+            {% endfor %}
+        {% else %}
+        	No course
+        {% endif %}
+    </td>
+	<td>  <!--General Courses Elective -->
+    	{% if GE %} 
+        	{% for course in GE %}
+            	<a href="#" onclick="fireMyPopup(' {{ course.title }} ')" onmouseout="closeMyPopup()">{{ course.code }} <span class="grade">{{ course.code }}</span></a><br/>
+            {% endfor %}
+        {% else %}
+        	No course
+        {% endif %}
+    </td>
+    <td> <!-- Basic Course Mandatory -->
+    	{% if BM %} 
+        	{% for course in BM %}
+            	<a href="#" onclick="fireMyPopup(' {{ course.title }} ')" onmouseout="closeMyPopup()">{{ course.code }} <span class="grade">{{ course.code }}</span></a><br/>
+            {% endfor %}
+        {% else %}
+        	No course
+        {% endif %}
+    </td>
+    <td> <!-- Basic Course Elective -->
+    	{% if BE %} 
+        	{% for course in BE %}
+            	<a href="#" onclick="fireMyPopup(' {{ course.title }} ')" onmouseout="closeMyPopup()">{{ course.code }} <span class="grade">{{ course.code }}</span></a><br/>
+            {% endfor %}
+        {% else %}
+        	No course
+        {% endif %}
+    </td>
+    <td> <!-- Major Course Mandatory -->
+    	{% if MM %} 
+        	{% for course in MM %}
+            	<a href="#" onclick="fireMyPopup(' {{ course.title }} ')" onmouseout="closeMyPopup()">{{ course.code }} <span class="grade">{{ course.code }}</span></a><br/>
+            {% endfor %}
+        {% else %}
+        	No course
+        {% endif %}
+    </td>
+    <td> <!-- Major Course Elective -->
+    	{% if ME %} 
+        	{% for course in ME %}
+            	<a href="#" onclick="fireMyPopup(' {{ course.title }} ')" onmouseout="closeMyPopup()">{{ course.code }} <span class="grade">{{ course.code }}</span></a><br/>
+            {% endfor %}
+        {% else %}
+        	No course
+        {% endif %}
+    </td>
+    <td> <!-- Other Elective --> 
+    	{% if OE %} 
+        	{% for course in OE %}
+            	<a href="#" onclick="fireMyPopup(' {{ course.title }} ')" onmouseout="closeMyPopup()">{{ course.code }} <span class="grade">{{ course.code }}</span></a><br/>
+            {% endfor %}
+        {% else %}
+        	No course
+        {% endif %}
+    </td>
+    <td> <!--Other Other-->
+    	{% if OO %} 
+        	{% for course in OO %}
+            	<a href="#" onclick="fireMyPopup(' {{ course.title }} ')" onmouseout="closeMyPopup()">{{ course.code }} <span class="grade">{{ course.code }}</a></span><br/>
+            {% endfor %}
+        {% else %}
+        	No course
+        {% endif %}
+    </td>
+    <td> <!-- Research-->
+    	{% if RR %} 
+        	{% for course in RR %}
+            	<a href="#" onclick="fireMyPopup(' {{ course.title }} ')" onmouseout="closeMyPopup()">{{ course.code }} <span class="grade">{{ course.code }}</a></span><br/>
+            {% endfor %}
+        {% else %}
+        	No course
+        {% endif %}
+    </td>
+  </tr>
+</table>
+<!-- *********************** popup *********************** -->
+
+<div id='styled_popup' name='styled_popup' style='width:auto height: 30px; display:none; position: absolute; top: 50px; left: 50px;'>
+<table cellpadding='0' cellspacing='0' border='0'>
+<tr ><td align="center" colspan='2' bgcolor="#CCCCCC" style='width:auto height: 30px;'>
+    <input type="text" border="0" style="background-color:#CCCCCC; border:hidden; width:auto;" id="title"/>
+</td></tr>
+</table>
+</div>
+</body>
+</html>

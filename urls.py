@@ -4,7 +4,7 @@ from django.contrib import admin
 import os.path
 
 
-# admin.autodiscover()
+admin.autodiscover()
 
 site_media = os.path.join(
     os.path.dirname(__file__), 'site_media'
@@ -13,6 +13,10 @@ site_media = os.path.join(
 urlpatterns = patterns('',
     (r'^$', home),
     (r'^CoursePlanner/$', main),
+    (r'^logout/$', logout_page),
+    (r'^all/$', all),
+    (r'^sms/$', sms),
+    (r'^admin/', include(admin.site.urls)),
     
     # Site Media
     (r'site_media/(?P<path>.*)$', 'django.views.static.serve',

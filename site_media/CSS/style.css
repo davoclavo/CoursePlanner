@@ -1,0 +1,157 @@
+
+form {
+    float: left;
+    position: top;
+}
+
+input {
+    display: block;
+
+}
+
+#login {
+    background-image:url('../images/kaist_summer_reduced2.jpg');
+    background-repeat: no-repeat;
+    background-position:center top;
+    ypos: 10%;
+}
+
+a:link {
+	color: #0033FF;
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+	color: #0033FF;
+}
+a:hover {
+	text-decoration: none;
+	color: #0033FF;
+}
+a:active {
+	text-decoration: none;
+	color: #0033FF;
+}
+.style2 {color: #FFFFFF}
+.style3 {color: #993333}
+.style1 {
+	color: #000000;
+	font-size: 10px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+.bodyBG {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	background-color: #333333;
+}
+
+.ATtable {
+	font-size: 14px;
+	font-weight: bold;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	color: #0033CC;
+}
+
+.iframe2{
+	height:300px;
+	width:100%;
+	overflow:auto;
+}
+
+.iframe1 {
+	height:auto;
+	width:100%;
+	overflow:auto;
+}
+
+legend {
+	font:Verdana, Helvetica;
+	font-size:10px;
+}
+
+fieldset {
+	background-color:#FFFFFF;
+}
+
+.title {
+	background-image:url(../Images/Logo/title.jpg);
+	height:20px;
+	width:150px;
+	vertical-align:middle;
+}
+
+.tdAlready{
+	width:300px;
+	
+}
+
+.tdAlready{
+	width:150px;
+}
+
+.tdCAlready{
+	width:135px;
+}
+
+#tab, #tab caption
+{
+    margin: auto;
+}
+
+#tab
+{
+    border: #DDEEFF 2px solid;
+    border-collapse: separate;
+    border-spacing: 2px;
+    empty-cells: hide;
+}
+
+#tab caption
+{
+    background-color: #DDEEFF;
+	font-size: 0.8em;
+}
+
+#tab th
+{
+    color: #996600;
+    background-color: #FFCC66;
+    border: #FFCC66 1px solid;
+    font-variant: small-caps;
+    font-size: 0.8em;
+    letter-spacing: 1px;
+}
+
+#tab td
+{
+    border: #DDEEFF 1px solid;
+    padding-left: 10px;
+}
+
+#navcol
+{
+    width: 200px;
+    background-color: #F4FAFD;
+}
+
+#numcol
+{
+    width: 150px;
+}
+
+#tab tfoot
+{
+    font-size: 0.7em;
+    background-color: #FFCC66;
+    color: #996600;
+    letter-spacing: 1px;
+}
+
+.grade{
+	margin-left:15px;
+}
+
+	

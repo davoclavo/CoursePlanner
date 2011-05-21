@@ -15,6 +15,9 @@ class session:
         self.password = password
         self.auth = False
         self.headers = {}
+        _user, dummy = User.objects.get_or_create(username=self.username)
+        self.user = _user
+        
         
     def login(self):
         cj = cookielib.CookieJar()
@@ -68,45 +71,90 @@ class session:
             if course.td['class'] != 'Header_9':
                 # All the td tags are the properties of the course
                 coursestaken.append(course.findAll('td'))
-        number = 0
-        user, dummy = User.objects.get_or_create(username=self.username)
-        self.deletealltaken(user)
+
+        
+        self.deletealltaken()
+
         for coursetaken in coursestaken:
-            number += 1
             dept = getcleantext(coursetaken[1].text)
             code = getcleantext(coursetaken[2].text)
             #section = getcleantext(coursetaken[3].text)
-            classification = getcleantext(coursetaken[4].text)
+            fullclassification = getcleantext(coursetaken[4].text)
+            classification = fullclassification
             title = getcleantext(coursetaken[5].text)
             #code = ':)'
+            
+            credits = int(coursetaken[8].text.replace('.0',''))
+            au =  int(coursetaken[9].text)
             grade = getcleantext(coursetaken[11].text)
             koreanname = getcleantext(coursetaken[12].text)
             #print "'%s', '%s' , '%s' , '%s' , '%s' , '%s' , '%s'" % (number, dept, code, classification, title, grade, koreanname)
-            
-            
+            type='UNKNOWN'
+            if classification.find('Mandatory') >= 0 :
+                classification = classification.replace('Mandatory','').strip()
+                type = 'Mandatory'
+                if classification != 'Basic' and classification != 'Major' :
+                    classification = 'General'
+            elif classification.find('Elective') >= 0 :
+                classification = classification.replace('Elective','').strip()
+                type = 'Elective'
+                if classification != 'Basic' and classification != 'Major' and classification != 'Other':
+                    classification = 'General'
+            elif classification.find('Required') >= 0 :
+                classification = classification.replace('Required','').strip()
+                type = 'Mandatory'
+                if classification != 'Basic' and classification != 'Major' :
+                    classification = 'General'
+            elif classification.find('Research') >= 0 or title.find('Research') >= 0  :
+                classification = 'Research'
+                type = 'Research'
+            else:
+                classification = 'Other'
+                type = 'Other' 
+                
             course = TakenCourse(
-                number=number,
                 dept=dept,
                 code=code,
+                fullclassification=fullclassification,
                 classification=classification,
                 title=title,
+                credits=credits,
+                au=au,
                 grade=grade,
                 koreanname=koreanname,
-                user=user,
+                user=self.user,
+                type = type,
             )
             course.save()
-            
-    def deletealltaken(self, user):
-        for course in TakenCourse.objects.filter(user=user):
-            course.delete()
+
+    def deletealltaken(self):
+        TakenCourse.objects.filter(user=self.user).delete()
+        
+    def takeuserinfo(self):
+        url = 'http://kaipa.kaist.ac.kr/menu/hs_menu_eng.jsp'
+        req = urllib2.Request(url, headers=self.headers)
+        response = urllib2.urlopen(req)
+        rawhtml = response.read()
+        soup = BeautifulSoup(rawhtml)
+        
+        name = soup.findAll('td',{'height':'25'}) # Retrieves the name
+        number = soup.findAll('option') # Retrieves student ID
+        menuitems = soup.findAll('td',{'height':'21'}) # Retrieves the program, department and status
+        self.user.name =  getcleantext(name[0].text)
+        self.user.number = getcleantext(number[0].text)
+        self.user.program = getcleantext(menuitems[0].text)
+        self.user.department = getcleantext(menuitems[1].text).replace('Department of','').strip()
+        self.user.status = getcleantext(menuitems[2].text)
+        return self.user
     
 def getcleantext(text):
     text = text.replace('&nbsp;', '')
-    cleantext = BeautifulStoneSoup(text, convertEntities=BeautifulStoneSoup.ALL_ENTITIES)
+    cleantext = BeautifulStoneSoup(text, convertEntities=BeautifulStoneSoup.ALL_ENTITIES).text
     if not cleantext:
         return ' '
     return cleantext
-        
+
+
 
 """
 X0  Number
